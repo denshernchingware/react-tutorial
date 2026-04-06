@@ -1,4 +1,6 @@
 
+import '../Checkout-header.css'
+import '../header.css'
 
 export function HomePage() {
     return (

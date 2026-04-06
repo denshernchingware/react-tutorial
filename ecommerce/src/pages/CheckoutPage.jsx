@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Checkout</title>
+import '../Checkout-header.css'
+import '../header.css'
+import '../checkout.css'
 
-    <!-- This code is needed for responsive design to work.
-      (Responsive design = make the website look good on
-      smaller screen sizes like a phone or a tablet). -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+export function CheckoutPage() {
+  return (
+    <>
+      <title>checkout</title>
+     <div class="checkout-header">
+       <div class="header-content">
+         <div class="checkout-header-left-section">
+           <a href="index.html">
+             <img class="logo" src="images/logo.png" />
+             <img class="mobile-logo" src="images/mobile-logo.png" />
+           </a>
+         </div>
 
-    <!-- Load a font called Roboto from Google Fonts. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Here are the CSS files for this page. -->
-    <link rel="stylesheet" href="styles/shared/general.css">
-    <link rel="stylesheet" href="styles/pages/checkout/checkout-header.css">
-    <link rel="stylesheet" href="styles/pages/checkout/checkout.css">
-  </head>
-  <body>
-    <div class="checkout-header">
-      <div class="header-content">
-        <div class="checkout-header-left-section">
-          <a href="index.html">
-            <img class="logo" src="images/logo.png" />
-            <img class="mobile-logo" src="images/mobile-logo.png" />
-          </a>
-        </div>
-
-        <div class="checkout-header-middle-section">
-          Checkout (<a class="return-to-home-link"
+         <div class="checkout-header-middle-section">
+           Checkout (<a class="return-to-home-link"
             href="index.html">3 items</a>)
         </div>
 
@@ -231,5 +218,6 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </>
+  );
+}
