@@ -1,9 +1,23 @@
 
-
+//import {axios} from ''
 import { Header } from '../components/Header';
 
 
 export function HomePage() {
+    // axios.get().then
+    // axios.get('http://localhost:3000/api/products').then();
+    
+    fetch('http://localhost:3000/api/products')
+        .then((response) => {
+            response.json();
+        })
+        .then((data) => {
+            console.log(data);
+    });
+    
+    //fetch returns a promise . it has a method '.the(()=>{});.
+    //response parameter contains the data
+    //response.json is also asyncronous so we can not save it in avariable
     return (
         <>
               <Header/>
