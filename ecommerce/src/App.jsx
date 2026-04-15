@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState} from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { HomePage } from './pages/HomePage'
 import { CheckoutPage } from './pages/CheckoutPage'
 import { OrdersPage } from './pages/OrdersPage'
@@ -12,19 +12,28 @@ import './general.css'
 
 function App() {
   const [cart, setCart] = useState([]);
+
   
+  // useEffect(() => {
+  //    axios.get('/api/cart-items?expand=product')
+  //       .then((response) => {
+  //           setCart(response.data)
+  //       })
+  // },[])
+ const getCartData = useCallback(async () => {
+      const response = await axios.get('/api/cart-items?expand=product');
+      setCart(response.data)
+    }, []);
+
   useEffect(() => {
-     axios.get('/api/cart-items?expand=product')
-        .then((response) => {
-            setCart(response.data)
-        })
-  },[])
+    getCartData();
+  }, [getCartData])
   
  
   return (
     <Routes>
-      <Route path='/' element={<HomePage cart={cart} />} />
-      <Route path='/checkout' element={<CheckoutPage  cart={cart}/>} />
+      <Route path='/' element={<HomePage cart={cart} getCartData={getCartData} />} />
+      <Route path='/checkout' element={<CheckoutPage cart={cart} getCartData={getCartData} />} />
       <Route path='/orders' element={<OrdersPage />} />
       <Route path='/tracking' element={<TrackingPage />} />
     </Routes>
